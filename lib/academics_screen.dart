@@ -1,71 +1,38 @@
 // ignore_for_file: prefer_const_constructors, unused_element
 
 import 'dart:convert';
+import 'dart:io';
+// import 'dart:html';
 // import 'dart:html';
 
 import 'package:flutter/material.dart';
-import './subject.dart';
+import 'package:kamara_parent/academics/card.dart';
+import 'package:kamara_parent/academics/http_service.dart';
+import 'package:kamara_parent/academics/subject_card.dart';
+import 'package:kamara_parent/academics/subject_detail.dart';
+import 'package:kamara_parent/academics/subject_screen.dart';
+import 'academics/models/subject.dart';
 import 'dart:async';
-import 'main.dart';
-import './home_screen.dart';
 import 'package:flutter/services.dart' show rootBundle;
+import 'package:http/http.dart' as http;
 
 class AcademicsScreen extends StatefulWidget {
-  const AcademicsScreen({Key? key}) : super(key: key);
+  const AcademicsScreen();
 
   @override
   _AcademicsScreen createState() => _AcademicsScreen();
 }
 
 class _AcademicsScreen extends State<AcademicsScreen> {
-  List _items = [];
-
-  MyApp myApp = new MyApp();
-  
-  _AcademicsScreen() {
-    readJson();
-  }
-
-  // Fetch content from the json file
-  Future<void> readJson() async {
-    final String response = await rootBundle.loadString('assets/subject.json');
-    final data = await json.decode(response);
-    setState(() {
-      _items = data["items"];
-    });
-  }
-
+  PageController pageController = PageController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        padding: const EdgeInsets.all(0),
-        child: Column(
-          children: [
-            // Display the data loaded from sample.json
-            Expanded(
-              child: ListView.builder(
-                itemCount: _items.length,
-                itemBuilder: (context, index) {
-                  return Card(
-                    color: Colors.amber,
-                    elevation: 3,
-                    margin: const EdgeInsets.all(10),
-                    child: InkWell(
-                      onTap: () => {},
-                      child: ListTile(
-                        // leading: Text(_items[index]["picture"]),
-                        title: Text(_items[index]["subject"]),
-                        subtitle: Text(_items[index]["teacherName"]),
-                      ),
-                    ),
-                  );
-                },
-              ),
-            )
-          ],
-        ),
-      ),
-    );
+        body: Column(children: [
+      CardType("Grade", "Here appears some associated information", "Grades",
+          SubjectScreen()),
+      CardType("Attendance", "Here appears some associated information",
+          "Atendance", SubjectScreen()),
+    ]));
   }
 }
