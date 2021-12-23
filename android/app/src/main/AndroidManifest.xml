@@ -1,5 +1,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.kamara_parent">
+    <!-- Required to fetch data from the internet. -->
+<uses-permission android:name="android.permission.INTERNET" />
+
    <application
         android:label="kamara_parent"
         android:name="${applicationName}"
