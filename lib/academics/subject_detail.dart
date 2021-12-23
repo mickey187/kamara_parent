@@ -55,9 +55,7 @@ class _SubjectDetails extends State<SubjectDetails> {
     return FutureBuilder<Assasment>(
       future: httpService.getAssasment(context, id),
       builder: (context, snapshot) {
-        print(snapshot.data.toString());
         if (snapshot.hasData) {
-          print("Abraham --- >>  ");
           List<SemisterOne> _semisterItem = [];
           for (var item in snapshot.data!.semisterOne) {
             SemisterOne d = SemisterOne(
@@ -73,8 +71,10 @@ class _SubjectDetails extends State<SubjectDetails> {
             return ListView.builder(
                 itemCount: _semisterItem.length,
                 itemBuilder: (BuildContext context, int index) {
-                  return GradeItemCard(_semisterItem[index].assasment,
-                      _semisterItem[index].mark);
+                  return GradeItemCard(
+                    _semisterItem[index].assasment,
+                    _semisterItem[index].mark + "/" + _semisterItem[index].load,
+                  );
                 });
           } else if (snapshot.hasError) {
             return Center(child: CircularProgressIndicator());
@@ -100,8 +100,8 @@ class _SubjectDetails extends State<SubjectDetails> {
                 height: 200,
                 width: 400,
                 child: SubjectCard(teacherName, subject, grade.toString())),
-            Container(
-              height: 600,
+            (Container(
+              height: 500,
               width: 400,
               child: _buildAssasment(context),
               // Expanded(
@@ -114,7 +114,7 @@ class _SubjectDetails extends State<SubjectDetails> {
               //     },
               //   ),
               // )
-            ),
+            )),
             // _buildBody(context),
           ],
         ));

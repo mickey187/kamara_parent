@@ -6,6 +6,7 @@ import 'dart:io';
 // import 'dart:html';
 
 import 'package:flutter/material.dart';
+import 'package:kamara_parent/academics/attendance_screen.dart';
 import 'package:kamara_parent/academics/card.dart';
 import 'package:kamara_parent/academics/http_service.dart';
 import 'package:kamara_parent/academics/subject_card.dart';
@@ -32,7 +33,7 @@ class _AcademicsScreen extends State<AcademicsScreen> {
       CardType("Grade", "Here appears some associated information", "Grades",
           SubjectScreen()),
       CardType("Attendance", "Here appears some associated information",
-          "Atendance", SubjectScreen()),
+          "Atendance", AttendanceScreen()),
     ]));
   }
 }
