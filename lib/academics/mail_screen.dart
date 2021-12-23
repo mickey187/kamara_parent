@@ -2,20 +2,21 @@
 
 import 'package:flutter/material.dart';
 
-class SubjectDetails extends StatefulWidget {
-  const SubjectDetails({Key? key}) : super(key: key);
+class MailScreen extends StatefulWidget {
+  const MailScreen({Key? key}) : super(key: key);
 
   @override
-  _SubjectDetails createState() => _SubjectDetails();
+  _MailScreen createState() => _MailScreen();
 }
 
-class _SubjectDetails extends State<SubjectDetails> {
+class _MailScreen extends State<MailScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      // ignore: unnecessary_new
       body: Center(
         child: Text(
-          "Subject Screen",
+          "Mail Screen",
           // ignore: unnecessary_new
           style: new TextStyle(
             fontSize: 25,
