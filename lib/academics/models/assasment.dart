@@ -1,13 +1,13 @@
 // To parse this JSON data, do
 //
-//     final assasment = assasmentFromJson(jsonString);
+//     final assasment = assasmentFromMap(jsonString);
 
 import 'package:meta/meta.dart';
 import 'dart:convert';
 
-Assasment assasmentFromJson(String str) => Assasment.fromJson(json.decode(str));
+Assasment assasmentFromMap(String str) => Assasment.fromMap(json.decode(str));
 
-String assasmentToJson(Assasment data) => json.encode(data.toJson());
+String assasmentToMap(Assasment data) => json.encode(data.toMap());
 
 class Assasment {
   Assasment({
@@ -15,47 +15,35 @@ class Assasment {
     required this.message,
     required this.currentSemister,
     required this.token,
-    required this.semisterOne,
-    required this.semisterTwo,
-    required this.semisterThree,
-    required this.semisterFour,
+    required this.semister,
   });
 
-  final bool succes;
-  final String message;
-  final String currentSemister;
-  final String token;
-  final List<SemisterOne> semisterOne;
-  final List<dynamic> semisterTwo;
-  final List<dynamic> semisterThree;
-  final List<dynamic> semisterFour;
+  bool succes;
+  String message;
+  String currentSemister;
+  String token;
+  List<Semister> semister;
 
-  factory Assasment.fromJson(Map<String, dynamic> json) => Assasment(
+  factory Assasment.fromMap(Map<String, dynamic> json) => Assasment(
         succes: json["succes"],
         message: json["message"],
         currentSemister: json["currentSemister"],
         token: json["token"],
-        semisterOne: List<SemisterOne>.from(
-            json["semister_one"].map((x) => SemisterOne.fromJson(x))),
-        semisterTwo: List<dynamic>.from(json["semister_two"].map((x) => x)),
-        semisterThree: List<dynamic>.from(json["semister_three"].map((x) => x)),
-        semisterFour: List<dynamic>.from(json["semister_four"].map((x) => x)),
+        semister: List<Semister>.from(
+            json["semister"].map((x) => Semister.fromMap(x))),
       );
 
-  Map<String, dynamic> toJson() => {
+  Map<String, dynamic> toMap() => {
         "succes": succes,
         "message": message,
         "currentSemister": currentSemister,
         "token": token,
-        "semister_one": List<dynamic>.from(semisterOne.map((x) => x.toJson())),
-        "semister_two": List<dynamic>.from(semisterTwo.map((x) => x)),
-        "semister_three": List<dynamic>.from(semisterThree.map((x) => x)),
-        "semister_four": List<dynamic>.from(semisterFour.map((x) => x)),
+        "semister": List<dynamic>.from(semister.map((x) => x.toMap())),
       };
 }
 
-class SemisterOne {
-  SemisterOne({
+class Semister {
+  Semister({
     required this.mark,
     required this.load,
     required this.assasment,
@@ -63,13 +51,13 @@ class SemisterOne {
     required this.date,
   });
 
-  final String mark;
-  final String load;
-  final String assasment;
-  final String semister;
-  final String date;
+  String mark;
+  String load;
+  String assasment;
+  String semister;
+  String date;
 
-  factory SemisterOne.fromJson(Map<String, dynamic> json) => SemisterOne(
+  factory Semister.fromMap(Map<String, dynamic> json) => Semister(
         mark: json["mark"],
         load: json["load"],
         assasment: json["assasment"],
@@ -77,7 +65,7 @@ class SemisterOne {
         date: json["date"],
       );
 
-  Map<String, dynamic> toJson() => {
+  Map<String, dynamic> toMap() => {
         "mark": mark,
         "load": load,
         "assasment": assasment,

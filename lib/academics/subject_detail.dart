@@ -4,7 +4,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:kamara_parent/academics/grade_item_card.dart';
 import 'package:kamara_parent/academics/http_service.dart';
-import 'package:kamara_parent/academics/models/Assasment.dart';
+import 'package:kamara_parent/academics/models/assasment.dart';
 import 'package:kamara_parent/academics/models/subject.dart';
 import 'package:kamara_parent/academics/subject_card.dart';
 import 'package:flutter/services.dart' show rootBundle;
@@ -55,10 +55,13 @@ class _SubjectDetails extends State<SubjectDetails> {
     return FutureBuilder<Assasment>(
       future: httpService.getAssasment(context, id),
       builder: (context, snapshot) {
+        print(snapshot.data.toString());
         if (snapshot.hasData) {
-          List<SemisterOne> _semisterItem = [];
-          for (var item in snapshot.data!.semisterOne) {
-            SemisterOne d = SemisterOne(
+          print("Abraham --- >>  ");
+          List<Semister> _semisterItem = [];
+          
+          for (var item in snapshot.data!.semister) {
+            Semister d = Semister(
                 mark: item.mark,
                 assasment: item.assasment,
                 load: item.load,
@@ -71,10 +74,8 @@ class _SubjectDetails extends State<SubjectDetails> {
             return ListView.builder(
                 itemCount: _semisterItem.length,
                 itemBuilder: (BuildContext context, int index) {
-                  return GradeItemCard(
-                    _semisterItem[index].assasment,
-                    _semisterItem[index].mark + "/" + _semisterItem[index].load,
-                  );
+                  return GradeItemCard(_semisterItem[index].assasment,
+                      _semisterItem[index].mark);
                 });
           } else if (snapshot.hasError) {
             return Center(child: CircularProgressIndicator());
@@ -100,8 +101,8 @@ class _SubjectDetails extends State<SubjectDetails> {
                 height: 200,
                 width: 400,
                 child: SubjectCard(teacherName, subject, grade.toString())),
-            (Container(
-              height: 500,
+            Container(
+              height: 600,
               width: 400,
               child: _buildAssasment(context),
               // Expanded(
@@ -114,7 +115,7 @@ class _SubjectDetails extends State<SubjectDetails> {
               //     },
               //   ),
               // )
-            )),
+            ),
             // _buildBody(context),
           ],
         ));
