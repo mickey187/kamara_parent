@@ -77,6 +77,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 snapshot.data!.studentData.streamType,
                 snapshot.data!.studentData.classLabel,
                 snapshot.data!.studentData.sectionName);
+            savePassword(passwordInputController.text);
             goToHomePage();
           }
 
@@ -101,6 +102,12 @@ class _LoginScreenState extends State<LoginScreen> {
     Navigator.push(context, MaterialPageRoute(builder: (context) => MyApp()));
   }
 
+  void savePassword(String password)async{
+    final sharedPreferences = await SharedPreferences.getInstance();
+    sharedPreferences.setString("password", password);
+
+  }
+
   void saveUserAccountInfo(
       String token,
       String name,
@@ -119,6 +126,8 @@ class _LoginScreenState extends State<LoginScreen> {
     sharedPreferences.setString("stream_type", stream_type);
     sharedPreferences.setString("class_label", class_label);
     sharedPreferences.setString("section", section);
+
+    
   }
 
   final _formKey = GlobalKey<FormState>();

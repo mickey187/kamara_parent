@@ -70,6 +70,10 @@ flutter:
     - assets/images/full-bloom.png
     - assets/images/blue-wallpaper-kolpaper-5.jpg
     - assets/images/orange_background.jpg
+    - assets/images/avatar_1.png
+    - assets/images/avatar_2.png
+    - assets/images/avatar_3.png
+    - assets/images/avatar_4.png
     
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
