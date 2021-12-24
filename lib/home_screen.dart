@@ -155,21 +155,53 @@ class _HomeScreen extends State<HomeScreen> {
               child: Column(
                 children: [
                   buildStudentData(),
-                  // Center(
-                  //   child:
-                  //   ElevatedButton(
-                  //     child: Text("click me"),
-                  //     onPressed: (){
-                  //       setState(() {
-                  //         _userAccountInfoBuilder = _getUserAccountInfo();
-                  //       });
-                  //     },
-                  //     ),
-                  // )
                 ],
               ),
             )),
+
+            Expanded(
+              child:GridView.count(
+                    mainAxisSpacing: 5,
+                    crossAxisSpacing: 5,
+                    crossAxisCount: 2,
+                    padding: EdgeInsets.all(5),
+                    children: <Widget>[
+                      SizedBox(
+                        width: 100,
+                        height: 100,
+                        child: Card(
+                          child: Text("card 1"),
+                        ),
+                      ),
+
+                       SizedBox(
+                        width: 100,
+                        height: 100,
+                        child: Card(
+                          child: Text("card 1"),
+                        ),
+                      ),
+
+                       SizedBox(
+                        width: 100,
+                        height: 100,
+                        child: Card(
+                          child: Text("card 1"),
+                        ),
+                      ),
+
+                       SizedBox(
+                        width: 100,
+                        height: 100,
+                        child: Card(
+                          child: Text("card 1"),
+                        ),
+                      ),
+                    ],
+                    ) 
+              )
       ],
     ));
   }
 }
+

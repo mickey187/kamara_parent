@@ -102,7 +102,7 @@ class _SubjectDetails extends State<SubjectDetails> {
                 width: 400,
                 child: SubjectCard(teacherName, subject, grade.toString())),
             Container(
-              height: 600,
+              height: 500,
               width: 400,
               child: _buildAssasment(context),
               // Expanded(
