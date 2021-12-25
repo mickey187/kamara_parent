@@ -62,7 +62,7 @@ class RPSCustomPainter extends CustomPainter{
       ..color = const Color.fromARGB(255, 92, 170, 231)
       ..style = PaintingStyle.fill
       ..strokeWidth = 1;
-    paint0.shader = ui.Gradient.radial(Offset(size.width*0.50,size.height*0.02),size.width*1.20,[Color(0x00304ffe),Color(0xffffffff)],[0.00,1.00]); 
+    paint0.shader = ui.Gradient.radial(Offset(size.width*0.50,size.height*0.02),size.width*1.20,[Color(0xff304ffe),Color(0xffffffff)],[0.00,1.00]); 
          
     Path path0 = Path();
     path0.moveTo(size.width*0.0058958,size.height*0.9694800);
