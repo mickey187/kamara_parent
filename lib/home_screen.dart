@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import './models/user.dart';
 import 'package:google_fonts/google_fonts.dart';
+import './attendance_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -222,7 +223,11 @@ class _HomeScreen extends State<HomeScreen> {
                        SizedBox(
                         width: 100,
                         height: 100,
-                        child: Card(
+                        child: GestureDetector(
+                          onTap: (){
+                             Navigator.push(context, MaterialPageRoute(builder: (context) => AttendanceScreen()));
+                          },
+                          child: Card(
                           elevation: 5,
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(10)
@@ -249,6 +254,7 @@ class _HomeScreen extends State<HomeScreen> {
                             ],
                           )
                         ),
+                        )
                       ),
 
                        SizedBox(

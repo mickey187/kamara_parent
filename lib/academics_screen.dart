@@ -2,8 +2,7 @@
 
 import 'dart:convert';
 import 'dart:io';
-// import 'dart:html';
-// import 'dart:html';
+import './attendance_screen.dart';
 
 import 'package:flutter/material.dart';
 import 'package:kamara_parent/academics/card.dart';
@@ -32,7 +31,7 @@ class _AcademicsScreen extends State<AcademicsScreen> {
       CardType("Grade", "Here appears some associated information", "Grades",
           SubjectScreen()),
       CardType("Attendance", "Here appears some associated information",
-          "Atendance", SubjectScreen()),
+          "Atendance", AttendanceScreen()),
     ]));
   }
 }
