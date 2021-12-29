@@ -33,21 +33,8 @@ class _SubjectDetails extends State<SubjectDetails> {
   final String teacherName;
   final String subject;
   final String grade;
-  _SubjectDetails(this.id, this.teacherName, this.subject, this.grade) {
-    // print(id);
-    readJson();
-  }
+  _SubjectDetails(this.id, this.teacherName, this.subject, this.grade);
   List _items = [];
-
-  Future<void> readJson() async {
-    final String response =
-        await rootBundle.loadString('assets/student_grade.json');
-    final data = await json.decode(response);
-
-    setState(() {
-      _items = data["items"];
-    });
-  }
 
   FutureBuilder<Assasment> _buildAssasment(BuildContext context) {
     final HttpService httpService = HttpService();
@@ -59,7 +46,7 @@ class _SubjectDetails extends State<SubjectDetails> {
         if (snapshot.hasData) {
           print("Abraham --- >>  ");
           List<Semister> _semisterItem = [];
-          
+
           for (var item in snapshot.data!.semister) {
             Semister d = Semister(
                 mark: item.mark,
@@ -74,8 +61,11 @@ class _SubjectDetails extends State<SubjectDetails> {
             return ListView.builder(
                 itemCount: _semisterItem.length,
                 itemBuilder: (BuildContext context, int index) {
-                  return GradeItemCard(_semisterItem[index].assasment,
-                      _semisterItem[index].mark);
+                  return GradeItemCard(
+                      _semisterItem[index].assasment,
+                      _semisterItem[index].mark +
+                          " / " +
+                          _semisterItem[index].load);
                 });
           } else if (snapshot.hasError) {
             return Center(child: CircularProgressIndicator());
@@ -105,18 +95,7 @@ class _SubjectDetails extends State<SubjectDetails> {
               height: 500,
               width: 400,
               child: _buildAssasment(context),
-              // Expanded(
-              //   child: ListView.builder(
-              //     itemCount: _items.length,
-              //     itemBuilder: (context, index) {
-              //       return GradeItemCard(
-              //           _items[index]["assasment"].toString(),
-              //           _items[index]["mark"].toString());
-              //     },
-              //   ),
-              // )
             ),
-            // _buildBody(context),
           ],
         ));
   }

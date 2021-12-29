@@ -21,17 +21,17 @@ class _GradeItemCard extends State<GradeItemCard> {
   Widget build(BuildContext context) {
     return Card(
       color: Colors.white,
-      elevation: 3,
-      shadowColor: Colors.white,
-      margin: EdgeInsets.all(15),
+      elevation: 1,
+      shadowColor: Colors.black,
+      margin: EdgeInsets.all(3),
       child: ListTile(
         title: Text(
           assasment,
-          style: TextStyle(color: Colors.blue),
+          style: TextStyle(color: Colors.black),
         ),
         subtitle: Text(value,
             style: TextStyle(
-              color: Colors.green,
+              color: Colors.black,
             )),
       ),
     );

@@ -28,18 +28,7 @@ class SubjectScreen extends StatefulWidget {
 class _SubjectScreen extends State<SubjectScreen> {
   List _items = [];
   // Function pageController;
-  _SubjectScreen() {
-    readJson();
-  }
-
-  // Fetch content from the json file
-  Future<void> readJson() async {
-    final String response = await rootBundle.loadString('assets/subject.json');
-    final data = await json.decode(response);
-    setState(() {
-      _items = data["items"];
-    });
-  }
+  _SubjectScreen();
 
   FutureBuilder<Subject> _buildBody(BuildContext context) {
     final HttpService httpService = HttpService();
@@ -57,7 +46,7 @@ class _SubjectScreen extends State<SubjectScreen> {
             _datemItem.add(d);
           }
           if (snapshot.hasData) {
-            return ListView.builder( 
+            return ListView.builder(
                 itemCount: _datemItem.length,
                 itemBuilder: (BuildContext context, int index) {
                   return Grade(
@@ -69,13 +58,10 @@ class _SubjectScreen extends State<SubjectScreen> {
                           _datemItem[index].teacherName,
                           _datemItem[index].subjectName,
                           _datemItem[index].grade),
-                          _datemItem[index].grade);
-      
+                      _datemItem[index].grade);
                 });
           } else if (snapshot.hasError) {
             return Center(child: CircularProgressIndicator());
-
-            // return Text('${snapshot.error}');
           }
         }
         return Center(child: CircularProgressIndicator());

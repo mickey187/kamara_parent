@@ -26,7 +26,7 @@ class _SubjectCard extends State<SubjectCard> {
       body: Card(
         child: Container(
           child: Padding(
-            padding: EdgeInsets.all(20),
+            padding: EdgeInsets.all(10),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
@@ -35,6 +35,7 @@ class _SubjectCard extends State<SubjectCard> {
                     Column(
                       children: [
                         Text(
+                          
                           subject,
                           style: TextStyle(
                               // color: Colors.black,
@@ -45,7 +46,7 @@ class _SubjectCard extends State<SubjectCard> {
                         Text(
                           name,
                           style: TextStyle(
-                              color: Colors.blue,
+                              color: Colors.black,
                               fontWeight: FontWeight.w300,
                               fontFamily: 'RobotoMono',
                               fontSize: 15),
@@ -62,7 +63,7 @@ class _SubjectCard extends State<SubjectCard> {
                         Text(
                           grade,
                           style: TextStyle(
-                              color: Colors.blue,
+                              color: Colors.black,
                               fontWeight: FontWeight.normal,
                               fontFamily: 'RobotoMono',
                               fontSize: 25),
@@ -70,11 +71,14 @@ class _SubjectCard extends State<SubjectCard> {
                         Text(
                           "Total grade",
                           style: TextStyle(
-                              color: Colors.blue,
+                              color: Colors.black,
                               fontWeight: FontWeight.w300,
                               fontFamily: 'RobotoMono',
                               fontSize: 18),
                         ),
+                        CircularProgressIndicator(
+                          semanticsValue:"85",
+                          )
                       ],
                     )
                   ],
@@ -88,7 +92,7 @@ class _SubjectCard extends State<SubjectCard> {
         color: Colors.white,
         elevation: 1,
         shadowColor: Colors.black,
-        margin: EdgeInsets.all(15),
+        // margin: EdgeInsets.all(2),
       ),
     );
   }
