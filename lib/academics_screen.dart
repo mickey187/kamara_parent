@@ -5,6 +5,7 @@ import 'dart:io';
 import './attendance_screen.dart';
 
 import 'package:flutter/material.dart';
+import 'package:kamara_parent/attendance_screen.dart';
 import 'package:kamara_parent/academics/card.dart';
 import 'package:kamara_parent/academics/http_service.dart';
 import 'package:kamara_parent/academics/subject_card.dart';

@@ -4,7 +4,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:kamara_parent/academics/grade_item_card.dart';
 import 'package:kamara_parent/academics/http_service.dart';
-import 'package:kamara_parent/academics/models/Assasment.dart';
+import 'package:kamara_parent/academics/models/assasment.dart';
 import 'package:kamara_parent/academics/models/subject.dart';
 import 'package:kamara_parent/academics/subject_card.dart';
 import 'package:flutter/services.dart' show rootBundle;
@@ -58,9 +58,10 @@ class _SubjectDetails extends State<SubjectDetails> {
         print(snapshot.data.toString());
         if (snapshot.hasData) {
           print("Abraham --- >>  ");
-          List<SemisterOne> _semisterItem = [];
-          for (var item in snapshot.data!.semisterOne) {
-            SemisterOne d = SemisterOne(
+          List<Semister> _semisterItem = [];
+          
+          for (var item in snapshot.data!.semister) {
+            Semister d = Semister(
                 mark: item.mark,
                 assasment: item.assasment,
                 load: item.load,
