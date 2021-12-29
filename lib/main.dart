@@ -8,10 +8,11 @@ import './home_screen.dart';
 import './mail_screen.dart';
 import './setting_screen.dart';
 import './login_screen_1.dart';
+import 'splash.dart';
 
 
 void main() {
-  runApp( CheckAuth());
+  runApp( SplashScreen());
 }
 
 class MyApp extends StatelessWidget {

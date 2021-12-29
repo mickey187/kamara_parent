@@ -3,6 +3,8 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import './models/user.dart';
+import 'package:google_fonts/google_fonts.dart';
+import './attendance_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -82,6 +84,7 @@ class _HomeScreen extends State<HomeScreen> {
       builder: (context, snapshot) {
         if (snapshot.hasData) {
           return Card(
+            elevation: 10,
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(10.0)),
             color: Colors.lightBlueAccent,
@@ -169,8 +172,120 @@ class _HomeScreen extends State<HomeScreen> {
                       SizedBox(
                         width: 100,
                         height: 100,
+                        child: GestureDetector(
+                          onTap: (){
+                            final snackBar = SnackBar(
+            content: const Text('Yay! A SnackBar!'),
+            action: SnackBarAction(
+              label: 'Undo',
+              onPressed: () {
+                // Some code to undo the change.
+              },
+            ),
+          );
+
+          // Find the ScaffoldMessenger in the widget tree
+          // and use it to show a SnackBar.
+          ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                          },
+                          child: Card(
+                          elevation: 5,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10)
+                          ),
+                          color: Colors.blueAccent,
+                          
+                          
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.end,
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Center(
+                                child: Icon(Icons.school_outlined, size: 70,color: Colors.white,),
+                              ),
+                              Center(
+                                child: Text(
+                                  "Grades",
+                                  style: GoogleFonts.lato(
+                                  textStyle: Theme.of(context).textTheme.overline,
+                                  fontSize: 17,
+                                  color: Colors.white
+                                ),
+                                  ),
+                              )
+                            ],
+                          )
+                        ),
+                        )
+                      ),
+
+                       SizedBox(
+                        width: 100,
+                        height: 100,
+                        child: GestureDetector(
+                          onTap: (){
+                             Navigator.push(context, MaterialPageRoute(builder: (context) => AttendanceScreen()));
+                          },
+                          child: Card(
+                          elevation: 5,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10)
+                          ),
+                          color: Colors.green[400] ,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.end,
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Center(
+                                child: Icon(Icons.task_alt_outlined, size: 70,color: Colors.white,),
+                              ),
+                              Center(
+                                child: Text(
+                                  "Attendance",
+                                   style: GoogleFonts.lato(
+                                  textStyle: Theme.of(context).textTheme.overline,
+                                  fontSize: 17,
+                                  color: Colors.white
+                                ),
+                                  ),
+                              )
+                            ],
+                          )
+                        ),
+                        )
+                      ),
+
+                       SizedBox(
+                        width: 100,
+                        height: 100,
                         child: Card(
-                          child: Text("card 1"),
+                          elevation: 5,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10)
+                          ),
+                          color: Colors.amberAccent,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.end,
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Center(
+                                child: Icon(Icons.attach_money_outlined,size: 70,color: Colors.white,),
+                              ),
+                              Center(
+                                child: Text(
+                                  "Finance",
+                                   style: GoogleFonts.lato(
+                                  textStyle: Theme.of(context).textTheme.overline,
+                                  fontSize: 17,
+                                  color: Colors.white
+                                ),
+                                  ),
+                              )
+                            ],
+                          )
                         ),
                       ),
 
@@ -178,23 +293,31 @@ class _HomeScreen extends State<HomeScreen> {
                         width: 100,
                         height: 100,
                         child: Card(
-                          child: Text("card 1"),
-                        ),
-                      ),
-
-                       SizedBox(
-                        width: 100,
-                        height: 100,
-                        child: Card(
-                          child: Text("card 1"),
-                        ),
-                      ),
-
-                       SizedBox(
-                        width: 100,
-                        height: 100,
-                        child: Card(
-                          child: Text("card 1"),
+                          elevation: 5,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10)
+                          ),
+                          color: Colors.redAccent,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.end,
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Center(
+                                child: Icon(Icons.chat, size: 70,color: Colors.white,),
+                              ),
+                              Center(
+                                child: Text(
+                                  "Communication",
+                                   style: GoogleFonts.lato(
+                                  textStyle: Theme.of(context).textTheme.overline,
+                                  fontSize: 17,
+                                  color: Colors.white
+                                ),
+                                  ),
+                              )
+                            ],
+                          )
                         ),
                       ),
                     ],

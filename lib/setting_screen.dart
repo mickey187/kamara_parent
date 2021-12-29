@@ -115,8 +115,16 @@ class _SettingScreen extends State<SettingScreen> {
                     title: Text("Logout"),
                     leading: Icon(Icons.logout),
                     trailing: Icon(Icons.arrow_right),
-                    onTap: () async {
-                      final sharedPreferences =
+                    onTap: () => showDialog <String>(
+                      context: context,
+                      builder: (BuildContext context) => AlertDialog(
+                        title: Text("Log out?"),
+                        content: Text("Are you sure you want to logut?"),
+                        actions: <Widget>[
+                          TextButton(
+                             child: Text("Yes"),
+                             onPressed: ()async{
+                                final sharedPreferences =
                           await SharedPreferences.getInstance();
                       if (sharedPreferences.containsKey("token") &&
                           sharedPreferences.containsKey("name") &&
@@ -127,7 +135,31 @@ class _SettingScreen extends State<SettingScreen> {
 
                       Navigator.push(context,
                           MaterialPageRoute(builder: (context) => LoginPage()));
-                    },
+                             },
+                            ),
+                            TextButton(
+                              child: Text("No"),
+                              onPressed: () => Navigator.pop(context, 'OK'),
+                              )
+                        ],
+                      )
+                      
+                      ),
+
+                      
+
+                      // final sharedPreferences =
+                      //     await SharedPreferences.getInstance();
+                      // if (sharedPreferences.containsKey("token") &&
+                      //     sharedPreferences.containsKey("name") &&
+                      //     sharedPreferences.containsKey("email")) {
+                      //   await sharedPreferences.clear();
+                      //   print("it was cleared das vidanya");
+                      // }
+
+                      // Navigator.push(context,
+                      //     MaterialPageRoute(builder: (context) => LoginPage()));
+                    
                   ),
                   ListTile(
                     title: Text("Account Settings"),
@@ -178,3 +210,5 @@ class _SettingScreen extends State<SettingScreen> {
     ));
   }
 }
+
+
